@@ -11,6 +11,13 @@
 |
 */
 
+
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('new_page');
+});
+
+Route::get('/user/', function() {
+    return view('user');
 });

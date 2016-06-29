@@ -15,7 +15,7 @@
 
 
 Route::get('/', function () {
-    return "Çàãëóøêà äëÿ ãëàâíîé ñòðàíèöû";
+    return "Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ° Ð´Ð»Ñ Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹";
 });
 
 Route::group(['prefix' => 'adminzone'], function()
@@ -25,9 +25,9 @@ Route::group(['prefix' => 'adminzone'], function()
        return view('admin.dashboard');
    });
 
-    Route::resource('Articles', 'ArticlesController');
-    Route::resource('Pages', 'PagesController');
-    Route::resource('Categories', 'CategoriesController');
+    Route::resource('articles', 'ArticlesController');
+    Route::resource('pages', 'PagesController');
+    Route::resource('categories', 'CategoriesController');
 });
 
 

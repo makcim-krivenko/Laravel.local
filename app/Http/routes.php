@@ -15,9 +15,19 @@
 
 
 Route::get('/', function () {
-    return view('new_page');
+    return "Заглушка для главной страницы";
 });
 
-Route::get('/user/', function() {
-    return view('user');
+Route::group(['prefix' => 'adminzone'], function()
+{
+   Route::get('/', function()
+   {
+       return view('admin.dashboard');
+   });
+
+    Route::resource('Articles', 'ArticlesController');
+    Route::resource('Pages', 'PagesController');
+    Route::resource('Categories', 'CategoriesController');
 });
+
+

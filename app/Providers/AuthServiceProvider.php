@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * Файл настройки прав доступа
+ */
+
 namespace App\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
@@ -26,8 +30,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        $gate->define('create', function ($user){
-            return $user->name=='superadmin' || $user->name=='admin';});
+        // определение права доступа для manager
+        $gate->define('manager', function ($user){
+            return $user->user_type=='5';});
+
+        // определение права доступа для admin
+        $gate->define('admin', function ($user){
+            return $user->user_type=='10';});
+
+        // определение права доступа для superadmin
+        $gate->define('superadmin', function ($user){
+            return $user->user_type=='100';});
 
     }
 }

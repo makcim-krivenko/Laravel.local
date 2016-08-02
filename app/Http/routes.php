@@ -21,12 +21,32 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
 
-Route::get('/articles','ArticleController@index');
-Route::get('/articles/create','ArticleController@create');
-Route::get('/articles/edit/{id}','ArticleController@edit');
-Route::post('/articles/update/{id}','ArticleController@update');
-Route::get('/articles/delete/{id}','ArticleController@delete');
-Route::post('/articles/store','ArticleController@store');
-Route::get('/articles/show/{id}','ArticleController@show');
+    Route::get('/', function(){
+        return view('admin.dashboard');
+    });
+
+    Route::group(['prefix' => 'articles'], function(){
+        Route::get('/','Admin\ArticleController@index');
+        Route::get('/create','Admin\ArticleController@create');
+        Route::get('/edit/{id}','Admin\ArticleController@edit');
+        Route::post('/update/{id}','Admin\ArticleController@update');
+        Route::get('/delete/{id}','Admin\ArticleController@delete');
+        Route::post('/store','Admin\ArticleController@store');
+        Route::get('/show/{id}','Admin\ArticleController@show');
+    });
+
+    Route::group(['prefix' => 'users'], function(){
+        Route::get('/','Admin\UserController@index');
+        Route::get('/create','Admin\UserController@create');
+        Route::get('/edit/{id}','Admin\UserController@edit');
+        Route::post('/update/{id}','Admin\UserController@update');
+        Route::get('/delete/{id}','Admin\UserController@delete');
+        Route::post('/store','Admin\UserController@store');
+        Route::get('/show/{id}','Admin\UserController@show');
+    });
+
+});
+
 

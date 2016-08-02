@@ -2,13 +2,13 @@
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/app/Article.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/Http/Controllers/ArticleController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Http/Controllers/Admin/ArticleController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/Http/routes.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resources/views/admin/articles.blade.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resources/views/admin/create.blade.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resources/views/admin/edit.blade.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resources/views/admin/show.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/admin/articles/articles.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/admin/articles/create.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/admin/articles/edit.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/admin/articles/show.blade.php" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

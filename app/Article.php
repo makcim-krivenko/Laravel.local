@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
 
-    protected $table = 'articles';
+    public $timestamps = true;
 
-    protected $fillable = ['title', 'content'];
+    protected $guarded = [
+        'title', 'slug', 'content', 'user_id', 'is_active'
+    ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

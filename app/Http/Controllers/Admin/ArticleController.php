@@ -7,18 +7,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Gate;
+use Illuminate\Support\Facades\Auth;
 
 
 class ArticleController extends Controller
 {
-
-
     public function index(){
-        $articles = Article::all();
+        if (Gate::allows('manager')) {
+            $articles = User::find(Auth::user()->id)->article()->get();
+        } else {
+            $articles = Article::all();
+        }
         return view('admin.articles.articles', ['articles' => $articles]);
     }
 

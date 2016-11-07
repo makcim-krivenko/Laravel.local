@@ -13,21 +13,18 @@
     <!-- /.navbar-header -->
 
     <ul class="nav navbar-top-links navbar-right">
-
         <!-- /.dropdown -->
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }}  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <li><a href="/admin/users/edit/{{ Auth::user()->id }}"><i class="fa fa-user fa-fw"></i> User Profile</a>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-
-
             </ul>
             <!-- /.dropdown-user -->
         </li>
@@ -53,18 +50,20 @@
                 </li>
                 <li>
                     <a href="/admin/articles"><i class="fa fa-files-o fa-fw"></i> Articles</a>
-                    <!-- /.nav-second-level -->
                 </li>
-                @can('superadmin')
-                <li>
-                    <a href="{{url('admin/users')}}"><i class="fa fa-files-o fa-fw"></i> Users</a>
-                </li>
-                @endcan
-                @can('admin')
-                <li>
-                    <a href="{{url('admin/users')}}"><i class="fa fa-files-o fa-fw"></i> Users</a>
-                </li>
-                @endcan
+                @if (Gate::allows('superadmin') || Gate::allows('admin'))
+                    <li>
+                        <a href="{{url('admin/users/')}}"><i class="fa fa-files-o fa-fw"></i> Users<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/users/">All Users</a>
+                            </li>
+                            <li>
+                                <a href="/admin/users/create/">Add New</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

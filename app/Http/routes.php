@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
@@ -39,12 +40,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
 
     Route::group(['prefix' => 'users'], function(){
         Route::get('/','Admin\UserController@index');
-        Route::get('/create','Admin\UserController@create');
+        Route::get('/create/','Admin\UserController@create');
         Route::get('/edit/{id}','Admin\UserController@edit');
         Route::post('/update/{id}','Admin\UserController@update');
-        Route::get('/delete/{id}','Admin\UserController@delete');
         Route::post('/store','Admin\UserController@store');
-        Route::get('/show/{id}','Admin\UserController@show');
+        Route::get('/delete/{id}','Admin\UserController@destroy');
     });
 
 });

@@ -7,14 +7,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 
-    protected $table = 'users';
+    public $timestamps = true;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'user_type',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -25,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'user_type',
     ];
+
+    public function article()
+    {
+        return $this->hasMany(Article::class);
+    }
 }
